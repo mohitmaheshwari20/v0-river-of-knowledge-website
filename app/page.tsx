@@ -28,7 +28,7 @@ export default function HomePage() {
               River of Knowledge
             </h1>
             <p className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-xl mx-auto">
-              Scripture-based Vedantic study for sincere seekers
+              Guiding seekers on the spiritual path through the study of Vedantic scriptures.
             </p>
           </div>
         </section>
@@ -73,7 +73,7 @@ export default function HomePage() {
                 </div>
                 <h3 className="font-serif text-lg text-foreground mb-3">Listen</h3>
                 <p className="text-sm text-muted-foreground leading-relaxed">
-                  Attend to the teachings with an open and receptive mind, allowing the words to settle.
+                  Listen to the scriptural modules and study scriptural texts with an open and receptive mind to prepare for deeper enquiry.
                 </p>
               </div>
               <div className="text-center">
@@ -82,7 +82,7 @@ export default function HomePage() {
                 </div>
                 <h3 className="font-serif text-lg text-foreground mb-3">Reflect</h3>
                 <p className="text-sm text-muted-foreground leading-relaxed">
-                  Contemplate what has been heard until all doubts are resolved through reason.
+                  Contemplate what has been heard until all doubts are resolved through reason. Clarify understanding through live classes and Q&A Sessions by Swami Ji.
                 </p>
               </div>
               <div className="text-center">
@@ -140,7 +140,7 @@ export default function HomePage() {
                 <MessageCircle className="h-6 w-6 text-primary mb-4" />
                 <h3 className="font-serif text-xl text-foreground mb-3">Q&A Series</h3>
                 <p className="text-sm text-muted-foreground leading-relaxed mb-4">
-                  Recorded sessions addressing sincere questions from seekers on the path.
+                  Monthly recorded sessions addressing sincere questions from seekers on the vedantic path of knowledge.
                 </p>
                 <span className="text-sm text-primary flex items-center gap-2 group-hover:gap-3 transition-all">
                   Browse episodes <ArrowRight className="h-4 w-4" />
