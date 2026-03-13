@@ -8,7 +8,7 @@ const modules = [
     id: "vakyavrtti",
     title: "Vākyavṛtti",
     subtitle: "Commentary on the Mahāvākyas",
-    description: "A foundational text by Śaṅkarācārya exploring the great statements of the Upaniṣads.",
+    description: "A foundational text by Śaṅkarācārya exploring the Mahāvākya - \"Tat Tvam Asi\" in the Upaniṣads.",
     lessons: 12,
     status: "available"
   },
