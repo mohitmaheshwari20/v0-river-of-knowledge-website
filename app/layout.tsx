@@ -17,7 +17,7 @@ const sourceSans = Source_Sans_3({
 
 export const metadata: Metadata = {
   title: 'River of Knowledge | Vedantic Study',
-  description: 'Scripture-based learning modules, live classes, and Q&A sessions guided by traditional teachings',
+  description: 'Scripture-based learning modules, live classes, and Q&A sessions guided by traditional teachings.',
   generator: 'v0.app',
   icons: {
     icon: [
