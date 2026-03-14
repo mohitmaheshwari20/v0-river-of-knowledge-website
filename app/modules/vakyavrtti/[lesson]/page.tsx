@@ -11,8 +11,9 @@ export async function generateStaticParams() {
   return lectures.map((lecture) => ({ lesson: lecture.slug }))
 }
 
-export async function generateMetadata({ params }: { params: { lesson: string } }) {
-  const lecture = getLectureBySlug(params.lesson)
+export async function generateMetadata({ params }: { params: Promise<{ lesson: string }> }) {
+  const { lesson } = await params
+  const lecture = getLectureBySlug(lesson)
   if (!lecture) return {}
   return {
     title: `${lecture.title} — Vākyavṛtti | River of Knowledge`,
@@ -20,8 +21,9 @@ export async function generateMetadata({ params }: { params: { lesson: string } 
   }
 }
 
-export default function LecturePage({ params }: { params: { lesson: string } }) {
-  const lecture = getLectureBySlug(params.lesson)
+export default async function LecturePage({ params }: { params: Promise<{ lesson: string }> }) {
+  const { lesson } = await params
+  const lecture = getLectureBySlug(lesson)
   if (!lecture) notFound()
 
   const nextLecture = getNextLecture(lecture.id)
