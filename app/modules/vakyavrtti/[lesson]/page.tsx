@@ -26,8 +26,8 @@ export async function generateMetadata({ params }: { params: { lesson: string } 
 }
 
 // ─── Page ─────────────────────────────────────────────────────────────────────
-export default function LecturePage({ params }: { params: { slug: string } }) {
-  const lecture = getLectureBySlug(params.slug)
+export default function LecturePage({ params }: { params: { lesson: string } }) {
+  const lecture = getLectureBySlug(params.lesson)
   if (!lecture) notFound()
 
   const nextLecture = getNextLecture(lecture.id)
