@@ -4,78 +4,27 @@ import { Footer } from "@/components/footer"
 import { ArrowLeft, ArrowRight, Play } from "lucide-react"
 
 const lessons = [
-  {
-    number: 1,
-    title: "Introduction to Vākyavṛtti",
-    duration: "45 min",
-    topics: ["Context and purpose", "The role of mahāvākyas", "Prerequisites for study"]
-  },
-  {
-    number: 2,
-    title: "The Nature of Inquiry",
-    duration: "52 min",
-    topics: ["Who is qualified?", "The four-fold qualification", "Desire for liberation"]
-  },
-  {
-    number: 3,
-    title: "Tat Tvam Asi — The Statement",
-    duration: "48 min",
-    topics: ["The three words", "Direct and implied meanings", "Apparent contradiction"]
-  },
-  {
-    number: 4,
-    title: "Analysis of 'Tat'",
-    duration: "55 min",
-    topics: ["Brahman as cause", "Sarvajñatva — omniscience", "Beyond attributes"]
-  },
-  {
-    number: 5,
-    title: "Analysis of 'Tvam'",
-    duration: "50 min",
-    topics: ["The individual self", "The five sheaths", "Witness consciousness"]
-  },
-  {
-    number: 6,
-    title: "The Meaning of 'Asi'",
-    duration: "47 min",
-    topics: ["Identity and equation", "Removing superimposition", "Non-difference"]
-  },
-  {
-    number: 7,
-    title: "Jahad-Ajahad Lakṣaṇā",
-    duration: "58 min",
-    topics: ["Method of indication", "Partial retention", "Resolving contradiction"]
-  },
-  {
-    number: 8,
-    title: "Objections and Responses",
-    duration: "52 min",
-    topics: ["Pūrvapakṣa views", "Logical refutation", "Strengthening understanding"]
-  },
-  {
-    number: 9,
-    title: "Knowledge and Action",
-    duration: "45 min",
-    topics: ["Role of action", "Knowledge as liberator", "Beyond karma"]
-  },
-  {
-    number: 10,
-    title: "The Liberated One",
-    duration: "50 min",
-    topics: ["Jīvanmukti", "Freedom while living", "Natural abidance"]
-  },
-  {
-    number: 11,
-    title: "Removal of Doubt",
-    duration: "48 min",
-    topics: ["Common misconceptions", "Final clarifications", "Firm conviction"]
-  },
-  {
-    number: 12,
-    title: "Conclusion and Integration",
-    duration: "42 min",
-    topics: ["Summary of teaching", "Continued practice", "The path forward"]
-  }
+  { number: 1, title: "Tat Tvam Asi - Lecture 1" },
+  { number: 2, title: "Parokṡa – Aparokṡa Jnana - Lecture 2" },
+  { number: 3, title: "The 'Witness', is the Self - Lecture 3" },
+  { number: 4, title: "सन्निधिमात्रेण सोऽहमित्यवधारय - Lecture 4" },
+  { number: 5, title: "Avikāritayā-Ᾱtmanaḥ - Lecture 5" },
+  { number: 6, title: "Ādityavarṇaṁ tamasaḥ parastāt - Lecture 6" },
+  { number: 7, title: "Nirastātiśayānandaḥ - Lecture 7" },
+  { number: 8, title: "Parapremāspadatayā - Lecture 8" },
+  { number: 9, title: "So'hamityavadhāraya - Lecture 9" },
+  { number: 10, title: "साक्षित्वम् - Lecture 10" },
+  { number: 11, title: "Tvamarthamevaṁ niścitya - Lecture 11" },
+  { number: 12, title: "Tadarthaṁ cintayetpunaḥ - Lecture 12" },
+  { number: 13, title: "निरस्ताशेषसंसारदोषः - Lecture 13" },
+  { number: 14, title: "Tat Tvam Asi - Lecture 14" },
+  { number: 15, title: "Tat Tvam Asi - Lecture 15" },
+  { number: 16, title: "Tat Tvam Asi - Lecture 16" },
+  { number: 17, title: "Tat Tvam Asi - Lecture 17" },
+  { number: 18, title: "Tat Tvam Asi - Lecture 18" },
+  { number: 19, title: "Tat Tvam Asi - Lecture 19" },
+  { number: 20, title: "Tat Tvam Asi - Lecture 20" },
+  { number: 21, title: "Tat Tvam Asi - Lecture 21" }
 ]
 
 export default function VakyavrttiPage() {
@@ -122,28 +71,16 @@ export default function VakyavrttiPage() {
                 <Link
                   key={lesson.number}
                   href={`/modules/vakyavrtti/lesson-${lesson.number}`}
-                  className="group p-6 border border-border bg-card hover:border-primary/30 transition-colors"
+                  className="group p-5 border border-border bg-card hover:border-primary/30 transition-colors"
                 >
-                  <div className="flex items-start gap-6">
+                  <div className="flex items-center gap-4">
                     <div className="flex-shrink-0 w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
                       <Play className="h-4 w-4 text-primary" />
                     </div>
-                    <div className="flex-1 min-w-0">
-                      <div className="flex items-center justify-between mb-2">
-                        <h3 className="font-serif text-lg text-foreground">
-                          {lesson.number}. {lesson.title}
-                        </h3>
-                        <span className="text-xs text-muted-foreground">{lesson.duration}</span>
-                      </div>
-                      <div className="flex flex-wrap gap-2">
-                        {lesson.topics.map((topic, i) => (
-                          <span key={i} className="text-xs text-muted-foreground bg-secondary px-2 py-1">
-                            {topic}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                    <ArrowRight className="h-4 w-4 text-muted-foreground group-hover:text-primary transition-colors flex-shrink-0 mt-3" />
+                    <h3 className="font-serif text-lg text-foreground flex-1">
+                      {lesson.number}. {lesson.title}
+                    </h3>
+                    <ArrowRight className="h-4 w-4 text-muted-foreground group-hover:text-primary transition-colors flex-shrink-0" />
                   </div>
                 </Link>
               ))}

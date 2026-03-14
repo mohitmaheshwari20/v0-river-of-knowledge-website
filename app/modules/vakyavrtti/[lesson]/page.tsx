@@ -1,70 +1,117 @@
 import Link from "next/link"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
-import { ArrowLeft, ArrowRight, Clock, BookOpen } from "lucide-react"
+import { ArrowLeft, ArrowRight } from "lucide-react"
 
 const lessonData: Record<string, {
   number: number
   title: string
-  duration: string
   videoId: string
-  topics: string[]
-  integration: string
-  reflectionQuestions: string[]
 }> = {
   "lesson-1": {
     number: 1,
-    title: "Introduction to Vākyavṛtti",
-    duration: "45 min",
-    videoId: "dQw4w9WgXcQ",
-    topics: [
-      "Historical context and the place of Vākyavṛtti in Vedantic literature",
-      "The purpose and methodology of prakaraṇa granthas",
-      "Understanding the role of mahāvākyas in Vedantic teaching",
-      "Prerequisites for undertaking this study"
-    ],
-    integration: "This lesson establishes the foundation for all that follows. As you proceed through the module, you will see how each subsequent teaching builds upon the framework introduced here. Take time to familiarize yourself with the key terms before moving forward.",
-    reflectionQuestions: [
-      "What draws you to the study of Vedanta at this point in your life?",
-      "How do you understand the difference between information and transformation?",
-      "In what ways might this study challenge your current understanding of who you are?"
-    ]
+    title: "Tat Tvam Asi, study of 'Vakya Vritti' with Swami Abhishek Chaitanya Giri - Lecture 1",
+    videoId: "eXNHjHolyQE"
   },
   "lesson-2": {
     number: 2,
-    title: "The Nature of Inquiry",
-    duration: "52 min",
-    videoId: "dQw4w9WgXcQ",
-    topics: [
-      "Adhikāritva — who is qualified for this inquiry",
-      "The four-fold qualification (sādhana catuṣṭaya)",
-      "Viveka — discrimination between the real and unreal",
-      "Mumukṣutva — the burning desire for liberation"
-    ],
-    integration: "The qualifications discussed are not checkboxes but ongoing orientations. Return to this lesson periodically to assess where you are and what still needs to be cultivated through study and practice.",
-    reflectionQuestions: [
-      "To what degree do you experience dispassion toward worldly pursuits?",
-      "What does liberation mean to you in practical terms?",
-      "How strong is your faith in the scriptures and the teaching tradition?"
-    ]
+    title: "Parokṡa – Aparokṡa Jnana, study of 'Vākya Vṛtti' with Swami Abhishek Chaitanya Giri - Lecture 2",
+    videoId: "l_UqCLrFIhM"
   },
   "lesson-3": {
     number: 3,
-    title: "Tat Tvam Asi — The Statement",
-    duration: "48 min",
-    videoId: "dQw4w9WgXcQ",
-    topics: [
-      "The structure of the mahāvākya as a sentence",
-      "Apparent meanings of each word",
-      "The seeming contradiction between Tat and Tvam",
-      "Introduction to lakṣaṇā — implied meaning"
-    ],
-    integration: "This lesson introduces the central statement that will be unpacked throughout the module. Hold the apparent contradiction lightly — the resolution will come through patient study.",
-    reflectionQuestions: [
-      "When you hear 'That Thou Art,' what is your initial reaction?",
-      "How do you currently understand the relationship between yourself and the ultimate reality?",
-      "What objections arise naturally in your mind to the claim of identity?"
-    ]
+    title: "The 'Witness', is the Self, study of 'Vākya Vṛtti' with Swami Abhishek Chaitanya Giri - Lecture 3",
+    videoId: "RQvxJro-OKU"
+  },
+  "lesson-4": {
+    number: 4,
+    title: "सन्निधिमात्रेण सोऽहमित्यवधारय, study of 'Vākya Vṛtti' with Swami Abhishek Chaitanya Giri - Lecture 4",
+    videoId: "rpFiPYo3l6Q"
+  },
+  "lesson-5": {
+    number: 5,
+    title: "Avikāritayā-Ᾱtmanaḥ, study of 'Vākya Vṛtti' with Swami Abhishek Chaitanya Giri - Lecture 5",
+    videoId: "wd-BBaCYtNw"
+  },
+  "lesson-6": {
+    number: 6,
+    title: "Ādityavarṇaṁ tamasaḥ parastāt, study of 'Vākya Vṛtti' with Swami Abhishek Chaitanya Giri - Lecture 6",
+    videoId: "-bH0ZY8x7Kg"
+  },
+  "lesson-7": {
+    number: 7,
+    title: "Nirastātiśayānandaḥ, study of 'Vākya Vṛtti' with Swami Abhishek Chaitanya Giri - Lecture 7",
+    videoId: "sVtz6DwlN9M"
+  },
+  "lesson-8": {
+    number: 8,
+    title: "Parapremāspadatayā, study of 'Vākya Vṛtti' with Swami Abhishek Chaitanya Giri - Lecture 8",
+    videoId: "OV44Z05NyZ0"
+  },
+  "lesson-9": {
+    number: 9,
+    title: "So'hamityavadhāraya, study of 'Vākya Vṛtti' with Swami Abhishek Chaitanya Giri - Lecture 9",
+    videoId: "LdM12aJpgKY"
+  },
+  "lesson-10": {
+    number: 10,
+    title: "साक्षित्वम्, study of 'Vākya Vṛtti' with Swami Abhishek Chaitanya Giri - Lecture 10",
+    videoId: "KmMMicUs8Ds"
+  },
+  "lesson-11": {
+    number: 11,
+    title: "Tvamarthamevaṁ niścitya, study of 'Vākya Vṛtti' with Swami Abhishek Chaitanya Giri - Lecture 11",
+    videoId: "ZM7QNym8C9o"
+  },
+  "lesson-12": {
+    number: 12,
+    title: "Tadarthaṁ cintayetpunaḥ, study of 'Vakya Vritti' with Swami Abhishek Chaitanya Giri - Lecture 12",
+    videoId: "zthLhpUqVHc"
+  },
+  "lesson-13": {
+    number: 13,
+    title: "निरस्ताशेषसंसारदोषः, study of 'Vakya Vritti' with Swami Abhishek Chaitanya Giri - Lecture 13",
+    videoId: "i7WqDyDxA-w"
+  },
+  "lesson-14": {
+    number: 14,
+    title: "Tat Tvam Asi, study of 'Vakya Vritti' with Swami Abhishek Chaitanya Giri - Lecture 14",
+    videoId: "yuK110D2BRk"
+  },
+  "lesson-15": {
+    number: 15,
+    title: "Tat Tvam Asi, study of 'Vakya Vritti' with Swami Abhishek Chaitanya Giri - Lecture 15",
+    videoId: "_NpbcQBPnEo"
+  },
+  "lesson-16": {
+    number: 16,
+    title: "Tat Tvam Asi, study of 'Vakya Vritti' with Swami Abhishek Chaitanya Giri - Lecture 16",
+    videoId: "Q4c177RkP1M"
+  },
+  "lesson-17": {
+    number: 17,
+    title: "Tat Tvam Asi, study of 'Vakya Vritti' with Swami Abhishek Chaitanya Giri - Lecture 17",
+    videoId: "Ja4KemFrs-k"
+  },
+  "lesson-18": {
+    number: 18,
+    title: "Tat Tvam Asi, study of 'Vakya Vritti' with Swami Abhishek Chaitanya Giri - Lecture 18",
+    videoId: "HsKO-GmnpMo"
+  },
+  "lesson-19": {
+    number: 19,
+    title: "Tat Tvam Asi, study of 'Vakya Vritti' with Swami Abhishek Chaitanya Giri - Lecture 19",
+    videoId: "kZ6NMhtUcRk"
+  },
+  "lesson-20": {
+    number: 20,
+    title: "Tat Tvam Asi, study of 'Vakya Vritti' with Swami Abhishek Chaitanya Giri - Lecture 20",
+    videoId: "YqoRwSQWEu8"
+  },
+  "lesson-21": {
+    number: 21,
+    title: "Tat Tvam Asi, study of 'Vakya Vritti' with Swami Abhishek Chaitanya Giri - Lecture 21",
+    videoId: "LltM599W50Y"
   }
 }
 
@@ -74,9 +121,26 @@ interface PageProps {
 
 export default async function LessonPage({ params }: PageProps) {
   const { lesson: lessonSlug } = await params
-  const lesson = lessonData[lessonSlug] || lessonData["lesson-1"]
+  const lesson = lessonData[lessonSlug]
   
-  const totalLessons = 12
+  if (!lesson) {
+    return (
+      <div className="min-h-screen flex flex-col">
+        <Header />
+        <main className="flex-1 pt-24 pb-20">
+          <div className="max-w-4xl mx-auto px-6 text-center">
+            <h1 className="font-serif text-2xl text-foreground mb-4">Lesson not found</h1>
+            <Link href="/modules/vakyavrtti" className="text-primary hover:underline">
+              Return to Vakyavrtti
+            </Link>
+          </div>
+        </main>
+        <Footer />
+      </div>
+    )
+  }
+  
+  const totalLessons = 21
   const prevLesson = lesson.number > 1 ? `lesson-${lesson.number - 1}` : null
   const nextLesson = lesson.number < totalLessons ? `lesson-${lesson.number + 1}` : null
   
@@ -108,55 +172,12 @@ export default async function LessonPage({ params }: PageProps) {
           {/* Lesson Info */}
           <div className="mb-12">
             <div className="flex items-center gap-4 mb-4">
-              <span className="text-sm text-muted-foreground">Lesson {lesson.number}</span>
-              <span className="text-muted-foreground">·</span>
-              <span className="text-sm text-muted-foreground flex items-center gap-1">
-                <Clock className="h-3 w-3" />
-                {lesson.duration}
-              </span>
+              <span className="text-sm text-muted-foreground">Lecture {lesson.number} of {totalLessons}</span>
             </div>
             <h1 className="font-serif text-2xl md:text-3xl text-foreground mb-6">
               {lesson.title}
             </h1>
           </div>
-          
-          {/* Topics Covered */}
-          <section className="mb-12">
-            <h2 className="font-serif text-lg text-foreground mb-4 flex items-center gap-2">
-              <BookOpen className="h-5 w-5 text-primary" />
-              Topics Covered
-            </h2>
-            <ul className="space-y-3">
-              {lesson.topics.map((topic, i) => (
-                <li key={i} className="flex items-start gap-3">
-                  <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
-                  <span className="text-muted-foreground leading-relaxed">{topic}</span>
-                </li>
-              ))}
-            </ul>
-          </section>
-          
-          {/* Integration Note */}
-          <section className="mb-12 p-6 bg-secondary/50 border border-border">
-            <h2 className="font-serif text-lg text-foreground mb-4">Integration Note</h2>
-            <p className="text-muted-foreground leading-relaxed">
-              {lesson.integration}
-            </p>
-          </section>
-          
-          {/* Reflection Questions */}
-          <section className="mb-16">
-            <h2 className="font-serif text-lg text-foreground mb-6">Questions for Reflection</h2>
-            <div className="space-y-4">
-              {lesson.reflectionQuestions.map((question, i) => (
-                <div key={i} className="p-5 border border-border bg-card">
-                  <p className="text-foreground leading-relaxed italic">
-                    {question}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </section>
           
           {/* Navigation */}
           <div className="flex items-center justify-between pt-8 border-t border-border">
