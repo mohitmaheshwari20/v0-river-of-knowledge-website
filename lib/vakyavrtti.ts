@@ -51,7 +51,7 @@ export const moduleInfo = {
 export const lectures: Lecture[] = [
   {
     id: 1,
-    slug: "lecture-1",
+    slug: "lesson-1",
     title: "Tat Tvam Asi",
     youtubeTitle: "Tat Tvam Asi, study of 'Vakya Vritti' with Swami Abhishek Chaitanya Giri - Lecture 1",
     youtubeId: "eXNHjHolyQE",
@@ -62,7 +62,7 @@ export const lectures: Lecture[] = [
   },
   {
     id: 2,
-    slug: "lecture-2",
+    slug: "lesson-2",
     title: "Parokṣa and Aparokṣa Jñāna",
     youtubeTitle: "Parokṡa – Aparokṡa Jnana, study of 'Vākya Vṛtti' with Swami Abhishek Chaitanya Giri - Lecture 2",
     youtubeId: "l_UqCLrFIhM",
@@ -73,7 +73,7 @@ export const lectures: Lecture[] = [
   },
   {
     id: 3,
-    slug: "lecture-3",
+    slug: "lesson-3",
     title: "The Witness is the Self",
     youtubeTitle: "The 'Witness', is the Self, study of 'Vākya Vṛtti' with Swami Abhishek Chaitanya Giri - Lecture 3",
     youtubeId: "RQvxJro-OKU",
@@ -84,7 +84,7 @@ export const lectures: Lecture[] = [
   },
   {
     id: 4,
-    slug: "lecture-4",
+    slug: "lesson-4",
     title: "सन्निधिमात्रेण सोऽहमित्यवधारय",
     youtubeTitle: "सन्निधिमात्रेण सोऽहमित्यवधारय, study of 'Vākya Vṛtti' with Swami Abhishek Chaitanya Giri - Lecture 4",
     youtubeId: "rpFiPYo3l6Q",
@@ -95,7 +95,7 @@ export const lectures: Lecture[] = [
   },
   {
     id: 5,
-    slug: "lecture-5",
+    slug: "lesson-5",
     title: "Avikāritayā Ātmanaḥ",
     youtubeTitle: "Avikāritayā-Ᾱtmanaḥ, study of 'Vākya Vṛtti' with Swami Abhishek Chaitanya Giri - Lecture 5",
     youtubeId: "wd-BBaCYtNw",
@@ -106,7 +106,7 @@ export const lectures: Lecture[] = [
   },
   {
     id: 6,
-    slug: "lecture-6",
+    slug: "lesson-6",
     title: "Ādityavarṇaṁ tamasaḥ parastāt",
     youtubeTitle: "Ādityavarṇaṁ tamasaḥ parastāt, study of 'Vākya Vṛtti' with Swami Abhishek Chaitanya Giri - Lecture 6",
     youtubeId: "-bH0ZY8x7Kg",
@@ -117,7 +117,7 @@ export const lectures: Lecture[] = [
   },
   {
     id: 7,
-    slug: "lecture-7",
+    slug: "lesson-7",
     title: "Nirastātiśayānandaḥ",
     youtubeTitle: "Nirastātiśayānandaḥ, study of 'Vākya Vṛtti' with Swami Abhishek Chaitanya Giri - Lecture 7",
     youtubeId: "sVtz6DwlN9M",
@@ -128,7 +128,7 @@ export const lectures: Lecture[] = [
   },
   {
     id: 8,
-    slug: "lecture-8",
+    slug: "lesson-8",
     title: "Parapremāspadatayā",
     youtubeTitle: "Parapremāspadatayā, study of 'Vākya Vṛtti' with Swami Abhishek Chaitanya Giri - Lecture 8",
     youtubeId: "OV44Z05NyZ0",
@@ -139,7 +139,7 @@ export const lectures: Lecture[] = [
   },
   {
     id: 9,
-    slug: "lecture-9",
+    slug: "lesson-9",
     title: "So'ham ityavadhāraya",
     youtubeTitle: "So'hamityavadhāraya, study of 'Vākya Vṛtti' with Swami Abhishek Chaitanya Giri - Lecture 9",
     youtubeId: "LdM12aJpgKY",
@@ -150,7 +150,7 @@ export const lectures: Lecture[] = [
   },
   {
     id: 10,
-    slug: "lecture-10",
+    slug: "lesson-10",
     title: "साक्षित्वम्",
     youtubeTitle: "साक्षित्वम्, study of 'Vākya Vṛtti' with Swami Abhishek Chaitanya Giri - Lecture 10",
     youtubeId: "KmMMicUs8Ds",
@@ -161,7 +161,7 @@ export const lectures: Lecture[] = [
   },
   {
     id: 11,
-    slug: "lecture-11",
+    slug: "lesson-11",
     title: "Tvamartham evaṁ niścitya",
     youtubeTitle: "Tvamarthamevaṁ niścitya, study of 'Vākya Vṛtti' with Swami Abhishek Chaitanya Giri - Lecture 11",
     youtubeId: "ZM7QNym8C9o",
@@ -172,7 +172,7 @@ export const lectures: Lecture[] = [
   },
   {
     id: 12,
-    slug: "lecture-12",
+    slug: "lesson-12",
     title: "Tadarthaṁ cintayetpunaḥ",
     youtubeTitle: "Tadarthaṁ cintayetpunaḥ, study of 'Vakya Vritti' with Swami Abhishek Chaitanya Giri - Lecture 12",
     youtubeId: "zthLhpUqVHc",
@@ -183,7 +183,7 @@ export const lectures: Lecture[] = [
   },
   {
     id: 13,
-    slug: "lecture-13",
+    slug: "lesson-13",
     title: "निरस्ताशेषसंसारदोषः",
     youtubeTitle: "निरस्ताशेषसंसारदोषः, study of 'Vakya Vritti' with Swami Abhishek Chaitanya Giri - Lecture 13",
     youtubeId: "i7WqDyDxA-w",
@@ -194,7 +194,7 @@ export const lectures: Lecture[] = [
   },
   {
     id: 14,
-    slug: "lecture-14",
+    slug: "lesson-14",
     title: "Tat Tvam Asi",
     youtubeTitle: "Tat Tvam Asi, study of 'Vakya Vritti' with Swami Abhishek Chaitanya Giri - Lecture 14",
     youtubeId: "yuK110D2BRk",
@@ -205,7 +205,7 @@ export const lectures: Lecture[] = [
   },
   {
     id: 15,
-    slug: "lecture-15",
+    slug: "lesson-15",
     title: "Tat Tvam Asi",
     youtubeTitle: "Tat Tvam Asi, study of 'Vakya Vritti' with Swami Abhishek Chaitanya Giri - Lecture 15",
     youtubeId: "_NpbcQBPnEo",
@@ -216,7 +216,7 @@ export const lectures: Lecture[] = [
   },
   {
     id: 16,
-    slug: "lecture-16",
+    slug: "lesson-16",
     title: "Tat Tvam Asi",
     youtubeTitle: "Tat Tvam Asi, study of 'Vakya Vritti' with Swami Abhishek Chaitanya Giri - Lecture 16",
     youtubeId: "Q4c177RkP1M",
@@ -227,7 +227,7 @@ export const lectures: Lecture[] = [
   },
   {
     id: 17,
-    slug: "lecture-17",
+    slug: "lesson-17",
     title: "Tat Tvam Asi",
     youtubeTitle: "Tat Tvam Asi, study of 'Vakya Vritti' with Swami Abhishek Chaitanya Giri - Lecture 17",
     youtubeId: "Ja4KemFrs-k",
@@ -238,7 +238,7 @@ export const lectures: Lecture[] = [
   },
   {
     id: 18,
-    slug: "lecture-18",
+    slug: "lesson-18",
     title: "Tat Tvam Asi",
     youtubeTitle: "Tat Tvam Asi, study of 'Vakya Vritti' with Swami Abhishek Chaitanya Giri - Lecture 18",
     youtubeId: "HsKO-GmnpMo",
@@ -249,7 +249,7 @@ export const lectures: Lecture[] = [
   },
   {
     id: 19,
-    slug: "lecture-19",
+    slug: "lesson-19",
     title: "Tat Tvam Asi",
     youtubeTitle: "Tat Tvam Asi, study of 'Vakya Vritti' with Swami Abhishek Chaitanya Giri - Lecture 19",
     youtubeId: "kZ6NMhtUcRk",
@@ -260,7 +260,7 @@ export const lectures: Lecture[] = [
   },
   {
     id: 20,
-    slug: "lecture-20",
+    slug: "lesson-20",
     title: "Tat Tvam Asi",
     youtubeTitle: "Tat Tvam Asi, study of 'Vakya Vritti' with Swami Abhishek Chaitanya Giri - Lecture 20",
     youtubeId: "YqoRwSQWEu8",
@@ -271,7 +271,7 @@ export const lectures: Lecture[] = [
   },
   {
     id: 21,
-    slug: "lecture-21",
+    slug: "lesson-21",
     title: "Tat Tvam Asi",
     youtubeTitle: "Tat Tvam Asi, study of 'Vakya Vritti' with Swami Abhishek Chaitanya Giri - Lecture 21",
     youtubeId: "LltM599W50Y",
