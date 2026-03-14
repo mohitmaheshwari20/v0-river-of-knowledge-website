@@ -12,12 +12,12 @@ import {
 
 // ─── Static params — tells Next.js which slugs to pre-render ─────────────────
 export async function generateStaticParams() {
-  return lectures.map((lecture) => ({ slug: lecture.slug }))
+  return lectures.map((lecture) => ({ lesson: lecture.slug }))
 }
 
 // ─── Page metadata ────────────────────────────────────────────────────────────
-export async function generateMetadata({ params }: { params: { slug: string } }) {
-  const lecture = getLectureBySlug(params.slug)
+export async function generateMetadata({ params }: { params: { lesson: string } }) {
+  const lecture = getLectureBySlug(params.lesson)
   if (!lecture) return {}
   return {
     title: `${lecture.title} — Vākyavṛtti | River of Knowledge`,
