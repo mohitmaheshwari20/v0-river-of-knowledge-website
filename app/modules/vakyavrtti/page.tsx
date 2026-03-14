@@ -57,7 +57,7 @@ export default function VakyavrttiPage() {
                       <Play className="h-4 w-4 text-primary" />
                     </div>
                     <h3 className="font-serif text-lg text-foreground flex-1 leading-snug">
-                      {lecture.id}. {lecture.title}
+                      {lecture.id}. {lecture.youtubeTitle.split(", study of")[0]}
                     </h3>
                     <ArrowRight className="h-4 w-4 text-muted-foreground group-hover:text-primary transition-colors flex-shrink-0" />
                   </div>
