@@ -1,199 +1,231 @@
-import Link from "next/link"
-import { Header } from "@/components/header"
-import { Footer } from "@/components/footer"
-import { ArrowLeft, ArrowRight, Clock, BookOpen } from "lucide-react"
+// app/modules/vakyavrtti/[slug]/page.tsx
 
-const lessonData: Record<string, {
-  number: number
-  title: string
-  duration: string
-  videoId: string
-  topics: string[]
-  integration: string
-  reflectionQuestions: string[]
-}> = {
-  "lesson-1": {
-    number: 1,
-    title: "Introduction to Vākyavṛtti",
-    duration: "45 min",
-    videoId: "dQw4w9WgXcQ",
-    topics: [
-      "Historical context and the place of Vākyavṛtti in Vedantic literature",
-      "The purpose and methodology of prakaraṇa granthas",
-      "Understanding the role of mahāvākyas in Vedantic teaching",
-      "Prerequisites for undertaking this study"
-    ],
-    integration: "This lesson establishes the foundation for all that follows. As you proceed through the module, you will see how each subsequent teaching builds upon the framework introduced here. Take time to familiarize yourself with the key terms before moving forward.",
-    reflectionQuestions: [
-      "What draws you to the study of Vedanta at this point in your life?",
-      "How do you understand the difference between information and transformation?",
-      "In what ways might this study challenge your current understanding of who you are?"
-    ]
-  },
-  "lesson-2": {
-    number: 2,
-    title: "The Nature of Inquiry",
-    duration: "52 min",
-    videoId: "dQw4w9WgXcQ",
-    topics: [
-      "Adhikāritva — who is qualified for this inquiry",
-      "The four-fold qualification (sādhana catuṣṭaya)",
-      "Viveka — discrimination between the real and unreal",
-      "Mumukṣutva — the burning desire for liberation"
-    ],
-    integration: "The qualifications discussed are not checkboxes but ongoing orientations. Return to this lesson periodically to assess where you are and what still needs to be cultivated through study and practice.",
-    reflectionQuestions: [
-      "To what degree do you experience dispassion toward worldly pursuits?",
-      "What does liberation mean to you in practical terms?",
-      "How strong is your faith in the scriptures and the teaching tradition?"
-    ]
-  },
-  "lesson-3": {
-    number: 3,
-    title: "Tat Tvam Asi — The Statement",
-    duration: "48 min",
-    videoId: "dQw4w9WgXcQ",
-    topics: [
-      "The structure of the mahāvākya as a sentence",
-      "Apparent meanings of each word",
-      "The seeming contradiction between Tat and Tvam",
-      "Introduction to lakṣaṇā — implied meaning"
-    ],
-    integration: "This lesson introduces the central statement that will be unpacked throughout the module. Hold the apparent contradiction lightly — the resolution will come through patient study.",
-    reflectionQuestions: [
-      "When you hear 'That Thou Art,' what is your initial reaction?",
-      "How do you currently understand the relationship between yourself and the ultimate reality?",
-      "What objections arise naturally in your mind to the claim of identity?"
-    ]
+import { notFound } from "next/navigation"
+import Link from "next/link"
+import {
+  getLectureBySlug,
+  getNextLecture,
+  lectures,
+  totalLectures,
+  type Lecture,
+} from "@/lib/vakyavrtti"
+
+// ─── Static params — tells Next.js which slugs to pre-render ─────────────────
+export async function generateStaticParams() {
+  return lectures.map((lecture) => ({ slug: lecture.slug }))
+}
+
+// ─── Page metadata ────────────────────────────────────────────────────────────
+export async function generateMetadata({ params }: { params: { slug: string } }) {
+  const lecture = getLectureBySlug(params.slug)
+  if (!lecture) return {}
+  return {
+    title: `${lecture.title} — Vākyavṛtti | River of Knowledge`,
+    description: lecture.youtubeTitle,
   }
 }
 
-interface PageProps {
-  params: Promise<{ lesson: string }>
-}
+// ─── Page ─────────────────────────────────────────────────────────────────────
+export default function LecturePage({ params }: { params: { slug: string } }) {
+  const lecture = getLectureBySlug(params.slug)
+  if (!lecture) notFound()
 
-export default async function LessonPage({ params }: PageProps) {
-  const { lesson: lessonSlug } = await params
-  const lesson = lessonData[lessonSlug] || lessonData["lesson-1"]
-  
-  const totalLessons = 12
-  const prevLesson = lesson.number > 1 ? `lesson-${lesson.number - 1}` : null
-  const nextLesson = lesson.number < totalLessons ? `lesson-${lesson.number + 1}` : null
-  
+  const nextLecture = getNextLecture(lecture.id)
+
   return (
-    <div className="min-h-screen flex flex-col">
-      <Header />
-      
-      <main className="flex-1 pt-24 pb-20">
-        <div className="max-w-4xl mx-auto px-6">
-          <Link 
-            href="/modules/vakyavrtti"
-            className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors mb-8"
-          >
-            <ArrowLeft className="h-4 w-4" />
+    <div className="min-h-screen bg-[#FAFAF8]">
+
+      {/* ── Breadcrumb ── */}
+      <div className="border-b border-stone-200 bg-white">
+        <div className="max-w-3xl mx-auto px-6 py-3 flex items-center gap-2 text-xs text-stone-400 tracking-wide">
+          <Link href="/modules" className="hover:text-amber-700 transition-colors">
+            Learning Modules
+          </Link>
+          <span>›</span>
+          <Link href="/modules/vakyavrtti" className="hover:text-amber-700 transition-colors">
             Vākyavṛtti
           </Link>
-          
-          {/* Video */}
-          <div className="aspect-video bg-foreground/5 mb-8 relative overflow-hidden border border-border">
+          <span>›</span>
+          <span className="text-stone-500">Lecture {lecture.id}</span>
+        </div>
+      </div>
+
+      {/* ── Main content ── */}
+      <main className="max-w-3xl mx-auto px-6 py-12 pb-24">
+
+        {/* Lesson header */}
+        <div className="mb-12 pb-8 border-b border-stone-100">
+          <div className="text-xs font-medium tracking-widest uppercase text-amber-700 mb-3">
+            Lecture {lecture.id} of {totalLectures}
+          </div>
+          <h1 className="font-serif text-3xl text-stone-800 mb-2 leading-snug">
+            {lecture.title}
+          </h1>
+          <p className="font-serif italic text-lg text-stone-400">
+            {lecture.youtubeTitle.split(" - Lecture")[0].split(", study of")[0]}
+          </p>
+        </div>
+
+        {/* ── 1. Verses ── */}
+        {lecture.verses.length > 0 && (
+          <section className="mb-12">
+            <div className="text-xs font-medium tracking-widest uppercase text-amber-700 mb-5">
+              Verses in this lecture
+            </div>
+            <div className="border border-stone-200 rounded-lg overflow-hidden bg-white">
+              {lecture.verses.map((verse, index) => (
+                <div
+                  key={verse.number}
+                  className={`grid grid-cols-[48px_1fr] gap-4 p-6 ${
+                    index < lecture.verses.length - 1 ? "border-b border-stone-100" : ""
+                  }`}
+                >
+                  <div className="font-serif italic text-xl text-stone-300 text-center border-r border-stone-100 pt-1">
+                    {verse.number}
+                  </div>
+                  <div className="pl-2">
+                    <p className="text-xl text-stone-800 leading-loose mb-2" style={{ fontFamily: "'Noto Sans Devanagari', serif" }}>
+                      {verse.sanskrit}
+                    </p>
+                    <p className="font-serif italic text-base text-stone-500 leading-relaxed mb-1">
+                      {verse.english}
+                    </p>
+                    <p className="text-sm text-stone-400 leading-relaxed">
+                      {verse.hindi}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
+
+        {/* ── 2. Video ── */}
+        <section className="mb-12">
+          <div className="text-xs font-medium tracking-widest uppercase text-amber-700 mb-5">
+            Lecture by Swami Ji
+          </div>
+          <div className="w-full aspect-video rounded-lg overflow-hidden border border-stone-200 bg-stone-100">
             <iframe
-              src={`https://www.youtube.com/embed/${lesson.videoId}`}
-              title={lesson.title}
+              src={`https://www.youtube.com/embed/${lecture.youtubeId}`}
+              title={lecture.youtubeTitle}
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
-              className="absolute inset-0 w-full h-full"
+              className="w-full h-full"
             />
           </div>
-          
-          {/* Lesson Info */}
-          <div className="mb-12">
-            <div className="flex items-center gap-4 mb-4">
-              <span className="text-sm text-muted-foreground">Lesson {lesson.number}</span>
-              <span className="text-muted-foreground">·</span>
-              <span className="text-sm text-muted-foreground flex items-center gap-1">
-                <Clock className="h-3 w-3" />
-                {lesson.duration}
-              </span>
-            </div>
-            <h1 className="font-serif text-2xl md:text-3xl text-foreground mb-6">
-              {lesson.title}
-            </h1>
-          </div>
-          
-          {/* Topics Covered */}
+        </section>
+
+        {/* ── 3. Integration notes (PDF) ── */}
+        {lecture.pdfUrl && (
           <section className="mb-12">
-            <h2 className="font-serif text-lg text-foreground mb-4 flex items-center gap-2">
-              <BookOpen className="h-5 w-5 text-primary" />
-              Topics Covered
-            </h2>
-            <ul className="space-y-3">
-              {lesson.topics.map((topic, i) => (
-                <li key={i} className="flex items-start gap-3">
-                  <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
-                  <span className="text-muted-foreground leading-relaxed">{topic}</span>
-                </li>
-              ))}
-            </ul>
+            <div className="text-xs font-medium tracking-widest uppercase text-amber-700 mb-5">
+              Integration Notes
+            </div>
+            <a
+              href={lecture.pdfUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-4 p-5 bg-white border border-stone-200 rounded-lg hover:border-amber-300 hover:bg-amber-50 transition-all group"
+            >
+              <div className="w-11 h-11 rounded-md bg-amber-50 border border-amber-200 flex items-center justify-center text-xl flex-shrink-0">
+                📄
+              </div>
+              <div className="flex-1">
+                <div className="text-sm font-medium text-stone-700 mb-0.5">
+                  {lecture.pdfLabel}
+                </div>
+                <div className="text-xs text-stone-400">
+                  1-page thought flow overview
+                </div>
+              </div>
+              <div className="text-xs font-medium tracking-widest uppercase text-amber-700 group-hover:translate-x-1 transition-transform">
+                Download →
+              </div>
+            </a>
           </section>
-          
-          {/* Integration Note */}
-          <section className="mb-12 p-6 bg-secondary/50 border border-border">
-            <h2 className="font-serif text-lg text-foreground mb-4">Integration Note</h2>
-            <p className="text-muted-foreground leading-relaxed">
-              {lesson.integration}
+        )}
+
+        {/* ── 4. Reflection questions ── */}
+        {lecture.reflectionQuestions.length > 0 && (
+          <section className="mb-12">
+            <div className="text-xs font-medium tracking-widest uppercase text-amber-700 mb-5">
+              Reflection
+            </div>
+            <p className="font-serif italic text-base text-stone-400 mb-6 leading-relaxed">
+              For silent contemplation only. Nothing is submitted or evaluated.
             </p>
-          </section>
-          
-          {/* Reflection Questions */}
-          <section className="mb-16">
-            <h2 className="font-serif text-lg text-foreground mb-6">Questions for Reflection</h2>
-            <div className="space-y-4">
-              {lesson.reflectionQuestions.map((question, i) => (
-                <div key={i} className="p-5 border border-border bg-card">
-                  <p className="text-foreground leading-relaxed italic">
-                    {question}
+            <div className="border-t border-stone-100">
+              {lecture.reflectionQuestions.map((q, index) => (
+                <div
+                  key={q.id}
+                  className="flex gap-5 py-6 border-b border-stone-100"
+                >
+                  <span className="font-serif italic text-base text-stone-300 flex-shrink-0 w-4 text-center pt-0.5">
+                    {["i", "ii", "iii", "iv", "v"][index]}
+                  </span>
+                  <p className="font-serif text-xl text-stone-600 leading-relaxed">
+                    {q.question}
                   </p>
                 </div>
               ))}
             </div>
           </section>
-          
-          {/* Navigation */}
-          <div className="flex items-center justify-between pt-8 border-t border-border">
-            {prevLesson ? (
-              <Link 
-                href={`/modules/vakyavrtti/${prevLesson}`}
-                className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
-              >
-                <ArrowLeft className="h-4 w-4" />
-                Previous Lesson
-              </Link>
-            ) : (
-              <div />
-            )}
-            
-            {nextLesson ? (
-              <Link 
-                href={`/modules/vakyavrtti/${nextLesson}`}
-                className="flex items-center gap-2 text-sm text-primary hover:text-primary/80 transition-colors"
-              >
-                Next Lesson
-                <ArrowRight className="h-4 w-4" />
-              </Link>
-            ) : (
-              <Link 
-                href="/modules/vakyavrtti"
-                className="flex items-center gap-2 text-sm text-primary hover:text-primary/80 transition-colors"
-              >
-                Complete Module
-                <ArrowRight className="h-4 w-4" />
-              </Link>
-            )}
+        )}
+
+        {/* ── 5. Acknowledgement note ── */}
+        <section className="mb-12">
+          <div className="p-5 bg-amber-50 border-l-4 border-amber-200 rounded-r-lg">
+            <div className="text-xs font-medium tracking-widest uppercase text-amber-700 mb-1.5">
+              Acknowledgement
+            </div>
+            <p className="text-sm text-stone-500 leading-relaxed">
+              At the end of this module — after all lectures are complete — you will be asked
+              to confirm you have completed and reflected on the teaching before proceeding
+              to the next text.
+            </p>
           </div>
-        </div>
+        </section>
+
+        {/* ── 6. Next lesson ── */}
+        <section>
+          <div className="text-xs font-medium tracking-widest uppercase text-amber-700 mb-5">
+            Next Lesson
+          </div>
+          {nextLecture ? (
+            <Link
+              href={`/modules/vakyavrtti/${nextLecture.slug}`}
+              className="flex items-center gap-5 p-6 bg-white border border-stone-200 rounded-lg hover:border-amber-300 hover:bg-amber-50 transition-all group"
+            >
+              <div className="flex-1">
+                <div className="text-xs font-medium tracking-widest uppercase text-stone-400 mb-1.5">
+                  Lecture {nextLecture.id}
+                </div>
+                <div className="font-serif text-xl text-stone-800 mb-1">
+                  {nextLecture.title}
+                </div>
+                <div className="font-serif italic text-sm text-stone-400">
+                  {nextLecture.youtubeTitle.split(", study of")[0]}
+                </div>
+              </div>
+              <div className="text-xl text-stone-300 group-hover:text-amber-600 group-hover:translate-x-1 transition-all">
+                →
+              </div>
+            </Link>
+          ) : (
+            // Last lecture — point to module completion
+            <div className="p-6 bg-white border border-stone-200 rounded-lg text-center">
+              <div className="font-serif text-xl text-stone-700 mb-2">
+                You have reached the end of Vākyavṛtti.
+              </div>
+              <p className="font-serif italic text-sm text-stone-400">
+                The module acknowledgement will appear here when ready.
+              </p>
+            </div>
+          )}
+        </section>
+
       </main>
-      
-      <Footer />
     </div>
   )
 }
