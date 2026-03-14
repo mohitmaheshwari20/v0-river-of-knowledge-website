@@ -2,6 +2,7 @@ import Link from "next/link"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { ArrowRight } from "lucide-react"
+import { totalLectures } from "@/lib/vakyavrtti"
 
 const modules = [
   {
@@ -9,7 +10,7 @@ const modules = [
     title: "Vākyavṛtti",
     subtitle: "Commentary on the Mahāvākyas",
     description: "A foundational text by Śaṅkarācārya exploring the Mahāvākya - \"Tat Tvam Asi\" in the Upaniṣads.",
-    lessons: 12,
+    lessons: totalLectures,
     status: "available"
   },
   {
