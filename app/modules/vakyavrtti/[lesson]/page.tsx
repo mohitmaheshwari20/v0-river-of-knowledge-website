@@ -6,6 +6,7 @@ import {
   lectures,
   totalLectures,
 } from "@/lib/vakyavrtti"
+import { LearnerGate } from "@/components/learner-gate"
 
 export async function generateStaticParams() {
   return lectures.map((lecture) => ({ lesson: lecture.slug }))
@@ -29,6 +30,7 @@ export default async function LecturePage({ params }: { params: Promise<{ lesson
   const nextLecture = getNextLecture(lecture.id)
 
   return (
+    <LearnerGate>
     <div className="min-h-screen bg-[#FAFAF8]">
 
       {/* Breadcrumb */}
@@ -205,18 +207,30 @@ export default async function LecturePage({ params }: { params: Promise<{ lesson
               </div>
             </Link>
           ) : (
-            <div className="p-6 bg-white border border-stone-200 rounded-lg text-center">
-              <div className="font-serif text-xl text-stone-700 mb-2">
-                You have reached the end of Vākyavṛtti.
+            <Link
+              href="/modules/closing"
+              className="flex items-center gap-5 p-6 bg-white border border-stone-200 rounded-lg hover:border-amber-300 hover:bg-amber-50 transition-all group"
+            >
+              <div className="flex-1">
+                <div className="text-xs font-medium tracking-widest uppercase text-stone-400 mb-1.5">
+                  Module Complete
+                </div>
+                <div className="font-serif text-xl text-stone-800 mb-1">
+                  Completion of Text Study
+                </div>
+                <div className="font-serif italic text-sm text-stone-400">
+                  Integration, reflection, and continuing the study
+                </div>
               </div>
-              <p className="font-serif italic text-sm text-stone-400">
-                The module acknowledgement will appear here when ready.
-              </p>
-            </div>
+              <div className="text-xl text-stone-300 group-hover:text-amber-600 group-hover:translate-x-1 transition-all">
+                →
+              </div>
+            </Link>
           )}
         </section>
 
       </main>
     </div>
+    </LearnerGate>
   )
 }
