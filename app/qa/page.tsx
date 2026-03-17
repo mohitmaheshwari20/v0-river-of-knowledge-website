@@ -162,13 +162,31 @@ export default function QAPage() {
             ))}
           </div>
           
-          {/* Submit Question */}
-          <div className="mt-16 p-8 bg-secondary/50 border border-border text-center">
-            <h3 className="font-serif text-lg text-foreground mb-3">Have a Question?</h3>
-            <p className="text-sm text-muted-foreground leading-relaxed max-w-lg mx-auto">
-              Questions arising from sincere study are welcome. They may be addressed 
-              in upcoming Q&A sessions or during live classes.
-            </p>
+          <div className="mt-16 pt-12 border-t border-border">
+            <div className="max-w-xl">
+              <p className="text-xs font-medium tracking-widest uppercase text-amber-700 mb-2">
+                Have a question?
+              </p>
+              <h3 className="font-serif text-2xl text-foreground mb-3">
+                Submit a question for the Q&A series
+              </h3>
+              <p className="text-sm text-muted-foreground leading-relaxed mb-6">
+                Questions arising from sincere study are welcome. They may be addressed
+                in upcoming Q&A sessions or during live classes. Questions are for
+                clarification of understanding — not personal guidance.
+              </p>
+              <a
+                href="https://forms.gle/4KwLaGmyJPuoSgVw5"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-sm font-medium border border-border px-5 py-2.5 rounded hover:border-primary/30 hover:bg-secondary/50 transition-colors text-foreground"
+              >
+                Submit a question →
+              </a>
+              <p className="text-xs text-muted-foreground mt-4">
+                Submitted questions may be addressed in future Q&A sessions at Swami Ji's discretion.
+              </p>
+            </div>
           </div>
         </div>
       </main>
