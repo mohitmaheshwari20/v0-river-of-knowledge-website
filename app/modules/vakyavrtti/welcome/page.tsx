@@ -4,6 +4,7 @@ import { useState } from "react"
 import { useRouter } from "next/navigation"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
+import { lectures } from "@/lib/vakyavrtti"
 
 const points = [
   {
@@ -39,7 +40,7 @@ export default function WelcomePage() {
 
   function handleBegin() {
     localStorage.setItem("vakyavrtti_contract_accepted", "true")
-    router.push("/modules/vakyavrtti/lesson-1")
+    router.push(`/modules/vakyavrtti/${lectures[0].slug}`)
   }
 
   return (
